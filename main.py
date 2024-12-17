@@ -7,16 +7,20 @@ in quantity.json. The script takes no arguments and expects these files to be in
 the current directory.
 '''
 
+from typing import Any
 import json
 
-def read_inputs():
-    with open('allocation.json', 'r') as file:
+
+def read_inputs() -> tuple[Any, Any, Any]:
+    '''Read json inputs from expected locations'''
+
+    with open('allocation.json', 'r', encoding='utf-8') as file:
         allocation = json.load(file)
 
-    with open('price.json', 'r') as file:
+    with open('price.json', 'r', encoding='utf-8') as file:
         price = json.load(file)
 
-    with open('quantity.json', 'r') as file:
+    with open('quantity.json', 'r', encoding='utf-8') as file:
         quantity = json.load(file)
 
     if list(price.keys()) != list(quantity.keys()):
@@ -25,13 +29,15 @@ def read_inputs():
     return allocation, price, quantity
 
 
-def main():
+def main() -> None:
+    '''main program logic
+
+    Determines the difference in total dollars in each asset class, then calculates
+    the number of (fractional) shares would be needed to resolve the difference.
+    '''
     allocation, price, quantity = read_inputs()
 
-    values = {
-        fund: quantity[fund] * price[fund]
-        for fund in price.keys()
-    }
+    values = {fund: quantity[fund] * price[fund] for fund in price.keys()}
     total_value = sum(values.values())
     total_value += float(input('extra contribution ($): '))
 
