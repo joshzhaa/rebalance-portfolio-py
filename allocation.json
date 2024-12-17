@@ -1,0 +1,28 @@
+{
+  "SCV-Dev-Intl": {
+    "proportion": 0.05,
+    "funds": [
+      "AVDV"
+    ]
+  },
+  "SCV-US": {
+    "proportion": 0.1,
+    "funds": [
+      "AVUV"
+    ]
+  },
+  "Intl": {
+    "proportion": 0.25,
+    "funds": [
+      "IXUS",
+      "VXUS"
+    ]
+  },
+  "US": {
+    "proportion": 0.6,
+    "funds": [
+      "ITOT",
+      "VTI"
+    ]
+  }
+}
